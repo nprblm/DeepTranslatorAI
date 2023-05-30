@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Deep Translator AI</title>
+  <link rel="stylesheet" type="text/css" href="/static/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/style.css?<?php echo time();?>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header id="header">
+  <a id="header_logo" href="/">Deep Translation AI</a>
+  <div class="form_container">
+    <form class="form" th:action="@{/translation}" th:object="${word}" method="POST">
+      <input class="input" placeholder="Enter word" required="" type="text" th:field="*{word}" autocomplete="off" style="font: 16px 'Josefin Sans', sans-serif">
+      <span class="input-border"></span>
+      <button class="button" type="submit">Translate</button>
+    </form>
+  </div>
+</header>
+
+<article id="main">
+  <div id="main-block">
+    <h1 th:text="${error}" style="color: red"></h1>
+    <div class="main-container" th:each="translationItem : ${translation}">
+      <img id="word-image" th:src="${translationItem.getImageURL()}">
+      <div id="text-block">
+        <div class="full-width">
+          <h1>Translate:</h1>
+          <div class="full-width" th:each="translationWord : ${translationItem.getTranslations()}">
+            <div class="text-row">
+              <h2 th:text="${translationWord}"></h2>
+            </div>
+          </div>
+          <h1>Examples:</h1>
+          <div class="full-width" th:each="translationExample : ${translationItem.getExamples()}">
+            <div class="text-row">
+              <h2 th:text="${translationExample.getExampleEnglish()}"></h2>
+              <h2 th:text="${translationExample.getExampleUkrainian()}"></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</article>
+
+<footer>
+  <div class="footer-icons-main">
+    <div id="footer-items">
+      <a href="https://t.me/vitalik_bella">
+        <img class="footer-img" id="tg" src="/img/telegram-black-logo.png">
+
+      </a>
+      <a href="https://github.com/nprblm">
+        <img class="footer-img" id="git" src="/img/github-black-logo.png">
+
+      </a>
+      <a href="https://www.linkedin.com/in/vitalii-bella-526849230/">
+        <img class="footer-img" id="li" src="/img/linkedin-black-logo.png">
+
+      </a>
+    </div>
+  </div>
+  <div class="footer-text">
+    <h1 id="footer-bottom-text">©Deep Translator AI 2023</h1>
+  </div>
+</footer>
+</body>
+
+</html>
