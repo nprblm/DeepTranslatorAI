@@ -74,7 +74,7 @@ public class GPTTranslation {
     }
 
     private String getURLImage(Word word) {
-        String prompt = String.format("https://image-search10.p.rapidapi.com/index.php?q=%s", word.getWord().replaceAll(" ", "_"));
+        String prompt = String.format("https://joj-image-search.p.rapidapi.com/v2/?q=%s&hl=en", word.getWord().replaceAll(" ", "_"));
         try {
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(prompt))
@@ -83,11 +83,13 @@ public class GPTTranslation {
                     .method("GET", HttpRequest.BodyPublishers.noBody())
                     .build();
             HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+            System.out.println(response.body());
             String responseBody = response.body();
-            final JSONObject obj = new JSONObject(responseBody);
-            final JSONArray images = obj.getJSONArray("data");
-            final JSONObject item = images.getJSONObject(0);
-            return item.getString("image").replaceAll("\\\\", "");
+            final JSONObject obj = new JSONObject(responseBody).getJSONObject("response");
+            final JSONArray images = obj.getJSONArray("images");
+            final JSONObject item = images.getJSONObject(0).getJSONObject("image");
+            final String stringUrl = item.getString("url");
+            return stringUrl;
         } catch (Exception e) {
             return "Error";
         }
