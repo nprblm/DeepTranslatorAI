@@ -31,6 +31,3 @@ public class MVCConfig implements WebMvcConfigurer {
         return builder.build();
     }
 }
-
-
-

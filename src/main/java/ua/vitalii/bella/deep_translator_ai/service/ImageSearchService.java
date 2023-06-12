@@ -43,6 +43,4 @@ public class ImageSearchService {
             return "Error";
         }
     }
-
-
 }

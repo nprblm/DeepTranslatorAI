@@ -6,9 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import ua.vitalii.bella.deep_translator_ai.model.gpt.request.GPTTranslation;
-import ua.vitalii.bella.deep_translator_ai.model.entity.Word;
 import ua.vitalii.bella.deep_translator_ai.model.entity.Translation;
+import ua.vitalii.bella.deep_translator_ai.model.entity.Word;
+import ua.vitalii.bella.deep_translator_ai.model.gpt.request.GPTTranslation;
 
 @Controller
 public class HomeController {

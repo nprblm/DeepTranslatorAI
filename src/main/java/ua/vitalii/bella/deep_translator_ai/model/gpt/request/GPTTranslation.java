@@ -65,7 +65,7 @@ public class GPTTranslation {
 
         result.setTranslations(translatedWordsList.stream()
                 .map(String::trim)
-                .map(x->x.substring(0, 1).toUpperCase() + x.substring(1))
+                .map(x -> x.substring(0, 1).toUpperCase() + x.substring(1))
                 .collect(Collectors.toList()));
         result.setExamples(examplesList);
 
