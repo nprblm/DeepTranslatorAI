@@ -37,8 +37,7 @@ public class ImageSearchService {
             final JSONObject obj = new JSONObject(responseBody).getJSONObject("response");
             final JSONArray images = obj.getJSONArray("images");
             final JSONObject item = images.getJSONObject(0).getJSONObject("image");
-            final String stringUrl = item.getString("url");
-            return stringUrl;
+            return item.getString("url");
         } catch (Exception e) {
             return "Error";
         }
