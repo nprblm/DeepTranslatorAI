@@ -16,9 +16,11 @@
     <a id="header_logo" href="/">Deep Translation AI</a>
     <div class="form_container">
         <form class="form" th:action="@{/translation}" th:object="${word}" method="POST">
-            <input class="input" placeholder="Enter word" required="" type="text" th:field="*{word}" autocomplete="off" style="font: 16px 'Josefin Sans', sans-serif">
+            <input class="input" id="input_field" placeholder="Enter word" required="" type="text" th:field="*{word}"
+                   autocomplete="off"
+                   style="font: 16px 'Josefin Sans', sans-serif">
             <span class="input-border"></span>
-            <button class="button" type="submit">Translate</button>
+            <button class="button" id="translate-button" type="submit">Translate</button>
         </form>
     </div>
 </header>
@@ -27,7 +29,19 @@
     <div id="main-block">
         <img id="gpt-logo" src="/img/openai-black-logo.png" style="width: 240px">
         <h4 id="hello-text" style="font-size: 54px">Learn English words with AI powered translator</h4>
+    </div>
+    <div id="loader">
+        <div class="dot-spinner">
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
         </div>
+    </div>
 </article>
 
 <footer>
@@ -54,3 +68,12 @@
 </body>
 
 </html>
+
+<script>
+    const label = document.getElementById('main-block');
+    const button = document.getElementById('translate-button');
+    button.addEventListener('click', () => {
+        label.remove();
+        document.getElementById("loader").style.visibility = "visible";
+    });
+</script>
