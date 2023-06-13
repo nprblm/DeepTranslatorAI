@@ -2,6 +2,7 @@ package ua.vitalii.bella.deep_translator_ai.service;
 
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -21,6 +22,9 @@ public class ChatGPTService {
     @Value("${openai.api.key}")
     private String apiKey;
 
+    @Autowired
+    private RestTemplate restTemplate;
+
     private static final String OPEN_AI_CHAT_ENDPOINT = "https://api.openai.com/v1/chat/completions";
 
     public ChatGPTResponse getChatGPTResponse(String prompt) {
@@ -34,7 +38,7 @@ public class ChatGPTService {
         chatGPTRequest.setMessages(List.of(new Message("user", prompt)));
         chatGPTRequest.setMax_tokens(300);
 
-        RestTemplate restTemplate = new RestTemplate();
+        restTemplate = new RestTemplate();
         HttpEntity<ChatGPTRequest> request = new HttpEntity<>(chatGPTRequest, headers);
 
         return restTemplate.postForObject(OPEN_AI_CHAT_ENDPOINT, request, ChatGPTResponse.class);
