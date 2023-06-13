@@ -17,7 +17,7 @@ public class HomeController {
     GPTTranslation gptTranslation;
 
     @GetMapping("/")
-    public ModelAndView index(Word word, Model model) {
+    public ModelAndView index() {
         return new ModelAndView("index");
     }
 
