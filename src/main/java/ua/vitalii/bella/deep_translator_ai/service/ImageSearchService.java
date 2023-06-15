@@ -5,7 +5,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import ua.vitalii.bella.deep_translator_ai.model.entity.Word;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -22,8 +21,8 @@ public class ImageSearchService {
     @Value("${x.rapid.api.host}")
     private String XRapidAPIHost;
 
-    public String getURLImage(Word word) {
-        String prompt = String.format("https://joj-image-search.p.rapidapi.com/v2/?q=%s&hl=en", word.getWord().replaceAll(" ", "_"));
+    public String getURLImage(String word) {
+        String prompt = String.format("https://joj-image-search.p.rapidapi.com/v2/?q=%s&hl=en", word.replaceAll(" ", "_"));
         try {
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(prompt))

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import ua.vitalii.bella.deep_translator_ai.model.entity.Example;
 import ua.vitalii.bella.deep_translator_ai.model.entity.Prompt;
 import ua.vitalii.bella.deep_translator_ai.model.entity.Translation;
-import ua.vitalii.bella.deep_translator_ai.model.entity.Word;
 import ua.vitalii.bella.deep_translator_ai.model.gpt.response.ChatGPTResponse;
 import ua.vitalii.bella.deep_translator_ai.service.ChatGPTService;
 import ua.vitalii.bella.deep_translator_ai.service.ImageSearchService;
@@ -25,7 +24,7 @@ public class GPTTranslation {
     @Autowired
     private ImageSearchService imageSearchService;
 
-    public Translation getTranslation(Word word) {
+    public Translation getTranslation(String word) {
         Translation translation = new Translation();
 
         String prompt = Prompt.getPrompt(word);
