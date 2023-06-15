@@ -15,7 +15,7 @@
 <header id="header">
     <a id="header_logo" href="/">Deep Translation AI</a>
     <div class="form_container">
-        <form class="form" th:action="@{/translation}" th:object="${word}" method="POST">
+        <form class="form" th:action="@{/translation}" th:object="${translationRequest}" method="POST">
             <input class="input" id="input_field" placeholder="Enter word" required="" type="text" th:field="*{word}"
                    autocomplete="off"
                    style="font: 16px 'Josefin Sans', sans-serif">
