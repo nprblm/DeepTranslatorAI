@@ -31,7 +31,6 @@ public class ImageSearchService {
                     .method("GET", HttpRequest.BodyPublishers.noBody())
                     .build();
             HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-            System.out.println(response.body());
             String responseBody = response.body();
             final JSONObject obj = new JSONObject(responseBody).getJSONObject("response");
             final JSONArray images = obj.getJSONArray("images");
