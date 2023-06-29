@@ -1,6 +1,5 @@
 package ua.vitalii.bella.deep_translator_ai.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,10 +13,12 @@ import ua.vitalii.bella.deep_translator_ai.model.gpt.request.GPTTranslation;
 @Controller
 public class HomeController {
 
-    @Autowired
+    final
     GPTTranslation gptTranslation;
 
-    private final String ERROR_MESSAGE = "Something wrong, please try again later";
+    public HomeController(GPTTranslation gptTranslation) {
+        this.gptTranslation = gptTranslation;
+    }
 
     @GetMapping("/")
     public ModelAndView index(@ModelAttribute TranslationRequest translationRequest) {
@@ -27,6 +28,8 @@ public class HomeController {
     @PostMapping("/translation")
     public String postTranslation(@ModelAttribute TranslationRequest translationRequest, Model model) {
         Translation translation = gptTranslation.getTranslation(translationRequest.getWord());
+        String ERROR_MESSAGE = "Something wrong, please try again later";
+
         if (translation.getTranslations() == null || translation.getExamples() == null)
             model.addAttribute("error", ERROR_MESSAGE);
         else

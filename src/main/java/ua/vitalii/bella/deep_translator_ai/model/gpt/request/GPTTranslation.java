@@ -1,6 +1,5 @@
 package ua.vitalii.bella.deep_translator_ai.model.gpt.request;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ua.vitalii.bella.deep_translator_ai.model.entity.Prompt;
 import ua.vitalii.bella.deep_translator_ai.model.entity.Translation;
@@ -11,11 +10,14 @@ import ua.vitalii.bella.deep_translator_ai.service.ImageSearchService;
 @Component
 public class GPTTranslation {
 
-    @Autowired
-    private ChatGPTService chatGPTService;
+    private final ChatGPTService chatGPTService;
 
-    @Autowired
-    private ImageSearchService imageSearchService;
+    private final ImageSearchService imageSearchService;
+
+    public GPTTranslation(ChatGPTService chatGPTService, ImageSearchService imageSearchService) {
+        this.chatGPTService = chatGPTService;
+        this.imageSearchService = imageSearchService;
+    }
 
     public Translation getTranslation(String word) {
         Translation translation = new Translation();

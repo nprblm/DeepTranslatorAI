@@ -22,10 +22,14 @@ public class ChatGPTService {
     @Value("${openai.api.key}")
     private String apiKey;
 
-    @Autowired
     private RestTemplate restTemplate;
 
     private static final String OPEN_AI_CHAT_ENDPOINT = "https://api.openai.com/v1/chat/completions";
+
+    @Autowired
+    public ChatGPTService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     public ChatGPTResponse getChatGPTResponse(String prompt) {
 
