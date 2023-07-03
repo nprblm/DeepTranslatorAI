@@ -28,7 +28,7 @@ public class HomeController {
     @PostMapping("/translation")
     public String postTranslation(@ModelAttribute TranslationRequest translationRequest, Model model) {
         Translation translation = gptTranslation.getTranslation(translationRequest.getWord());
-        String ERROR_MESSAGE = "Something wrong, please try again later";
+        String ERROR_MESSAGE = "Something wrong, please try again";
 
         if (translation.getTranslations() == null || translation.getExamples() == null)
             model.addAttribute("error", ERROR_MESSAGE);
