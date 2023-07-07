@@ -27,7 +27,7 @@
 
 <article id="main">
     <div id="main-block">
-        <h1 th:text="${error}" style="color: red"></h1>
+        <h1 id="error-message" th:text="${error}" style="color: red"></h1>
         <div class="main-container" th:each="translationItem : ${translation}">
             <img id="word-image" th:src="${translationItem.getImageURL()}">
             <div id="text-block">

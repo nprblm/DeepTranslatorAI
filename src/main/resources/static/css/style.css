@@ -121,11 +121,8 @@ input::placeholder {
 }
 
 #main-block {
-    width: 80%;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    flex-direction: row;
+    height: 80%;
+    max-width: 90%;
 }
 
 #loader{
@@ -138,6 +135,10 @@ input::placeholder {
     justify-content: center;
     align-items: center;
     flex-direction: row;
+}
+
+#error-message{
+    min-width: 100%;
 }
 
 #gpt-logo {
