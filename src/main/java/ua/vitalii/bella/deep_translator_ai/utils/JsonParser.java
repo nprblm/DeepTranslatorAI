@@ -1,4 +1,4 @@
-package ua.vitalii.bella.deep_translator_ai.model.gpt.request;
+package ua.vitalii.bella.deep_translator_ai.utils;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
