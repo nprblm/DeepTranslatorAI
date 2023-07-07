@@ -32,7 +32,7 @@ public class GPTTranslationService {
             jsonString = jsonString.substring(jsonString.indexOf("{"), jsonString.lastIndexOf("}") + 1);
             translation = JsonParser.fromJSONToTranslation(jsonString);
         } catch (Exception e) {
-
+            System.out.println(e.getMessage());
         }
         translation.setImageURL(imageSearchService.getURLImage(word));
         return translation;
