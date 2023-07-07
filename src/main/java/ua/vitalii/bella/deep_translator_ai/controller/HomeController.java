@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import ua.vitalii.bella.deep_translator_ai.model.entity.Translation;
 import ua.vitalii.bella.deep_translator_ai.model.entity.TranslationRequest;
-import ua.vitalii.bella.deep_translator_ai.model.gpt.request.GPTTranslation;
+import ua.vitalii.bella.deep_translator_ai.service.GPTTranslationService;
 
 @Controller
 public class HomeController {
 
     final
-    GPTTranslation gptTranslation;
+    GPTTranslationService gptTranslation;
 
-    public HomeController(GPTTranslation gptTranslation) {
+    public HomeController(GPTTranslationService gptTranslation) {
         this.gptTranslation = gptTranslation;
     }
 

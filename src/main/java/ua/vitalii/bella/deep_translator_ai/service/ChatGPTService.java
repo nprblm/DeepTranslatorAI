@@ -42,7 +42,6 @@ public class ChatGPTService {
         chatGPTRequest.setMessages(List.of(new Message("user", prompt)));
         chatGPTRequest.setMax_tokens(300);
 
-        restTemplate = new RestTemplate();
         HttpEntity<ChatGPTRequest> request = new HttpEntity<>(chatGPTRequest, headers);
 
         return restTemplate.postForObject(OPEN_AI_CHAT_ENDPOINT, request, ChatGPTResponse.class);
