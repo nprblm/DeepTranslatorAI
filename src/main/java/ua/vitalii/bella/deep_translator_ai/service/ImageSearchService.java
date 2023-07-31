@@ -12,7 +12,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 @Service
-@RequiredArgsConstructor()
+@RequiredArgsConstructor
 public class ImageSearchService {
 
     @Value("${x.rapid.api.key}")

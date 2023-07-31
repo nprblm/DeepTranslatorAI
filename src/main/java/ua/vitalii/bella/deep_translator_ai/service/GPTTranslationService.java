@@ -1,24 +1,19 @@
 package ua.vitalii.bella.deep_translator_ai.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ua.vitalii.bella.deep_translator_ai.model.entity.Prompt;
 import ua.vitalii.bella.deep_translator_ai.model.entity.Translation;
-import ua.vitalii.bella.deep_translator_ai.utils.JsonParser;
 import ua.vitalii.bella.deep_translator_ai.model.gpt.response.ChatGPTResponse;
+import ua.vitalii.bella.deep_translator_ai.utils.JsonParser;
 
 @Component
+@RequiredArgsConstructor
 public class GPTTranslationService {
 
     private final ChatGPTService chatGPTService;
 
     private final ImageSearchService imageSearchService;
-
-    @Autowired
-    public GPTTranslationService(ChatGPTService chatGPTService, ImageSearchService imageSearchService) {
-        this.chatGPTService = chatGPTService;
-        this.imageSearchService = imageSearchService;
-    }
 
     public Translation getTranslation(String word) {
         Translation translation = new Translation();

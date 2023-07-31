@@ -1,5 +1,6 @@
 package ua.vitalii.bella.deep_translator_ai.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,14 +12,10 @@ import ua.vitalii.bella.deep_translator_ai.model.entity.TranslationRequest;
 import ua.vitalii.bella.deep_translator_ai.service.GPTTranslationService;
 
 @Controller
+@RequiredArgsConstructor
 public class HomeController {
 
-    final
-    GPTTranslationService gptTranslation;
-
-    public HomeController(GPTTranslationService gptTranslation) {
-        this.gptTranslation = gptTranslation;
-    }
+    final GPTTranslationService gptTranslation;
 
     @GetMapping("/")
     public ModelAndView index(@ModelAttribute TranslationRequest translationRequest) {
